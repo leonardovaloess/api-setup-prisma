@@ -16,6 +16,14 @@ const loginService = {
 
     return user;
   },
+
+  logout: async (data) => {
+    await prisma.blacklist.create({
+      data: {
+        token: data,
+      },
+    });
+  },
 };
 
 export default loginService;

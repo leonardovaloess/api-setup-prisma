@@ -22,3 +22,11 @@ model User {
 
   @@map("users") // renomeia o nome da tabela
 }
+
+model Blacklist {
+  id String @id @default(uuid())
+  token String @unique
+
+  @@map("blacklist") // renomeia o nome da tabela
+
+}
