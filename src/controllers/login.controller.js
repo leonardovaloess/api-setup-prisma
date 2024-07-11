@@ -31,6 +31,19 @@ const loginController = {
       return res.status(400).send("Usuário ja existente");
     }
   },
+
+  logout: async (req, res) => {
+    try {
+      const token = req.headers["token-auth"];
+
+      if (token) {
+        await loginService.logout(token);
+        return res.send("deslogado");
+      }
+    } catch (error) {
+      return res.status(400).send("Usuário ja existente");
+    }
+  },
 };
 
 export default loginController;
