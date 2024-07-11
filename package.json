@@ -2,20 +2,25 @@
   "name": "api-com-prisma",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/server.ts"
+    "dev": "npx nodemon src/server.js",
+    "migrate": "npx prisma migrate dev",
+    "studio": "npx prisma studio"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^5.16.2",
-    "@types/express": "^4.17.21",
+    "cors": "^2.8.5",
     "express": "^4.19.2",
-    "prisma": "^5.16.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.5.3"
+    "jsonwebtoken": "^9.0.2",
+    "prisma": "^5.16.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
   }
 }
