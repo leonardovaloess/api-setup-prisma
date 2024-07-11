@@ -9,7 +9,6 @@ const loginController = {
         expiresIn: 5000,
       });
 
-      console.log(token);
       return res.status(200).json({ user, token: token });
     } catch (error) {
       return res.status(400).send("Usuário ja existente");

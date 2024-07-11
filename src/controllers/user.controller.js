@@ -4,7 +4,7 @@ const userController = {
   createUser: async (req, res) => {
     try {
       const user = await userService.createUser(req.body);
-      console.log(user);
+
       return res.status(200).send(user);
     } catch (error) {
       return res.status(400).send("Usuário ja existente");
