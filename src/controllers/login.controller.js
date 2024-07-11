@@ -2,6 +2,19 @@ import loginService from "../services/login.service.js";
 import jwt from "jsonwebtoken";
 
 const loginController = {
+  signUp: async (req, res) => {
+    try {
+      const user = await loginService.signUp(req.body);
+      const token = jwt.sign({ userId: user.id }, process.env.SECRET, {
+        expiresIn: 5000,
+      });
+
+      console.log(token);
+      return res.status(200).json({ user, token: token });
+    } catch (error) {
+      return res.status(400).send("Usuário ja existente");
+    }
+  },
   login: async (req, res) => {
     try {
       const login = await loginService.login(req.body.email);
