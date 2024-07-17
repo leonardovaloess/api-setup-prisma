@@ -11,23 +11,23 @@ const loginController = {
 
       return res.status(200).json({ user, token: token });
     } catch (error) {
-      return res.status(400).send("Usuário ja existente");
+      return res.status(400).send("Erro ao criar conta");
     }
   },
   login: async (req, res) => {
     try {
-      const login = await loginService.login(req.body.email);
+      const login = await loginService.login(req.body);
 
       if (login) {
         const token = jwt.sign({ userId: login.id }, process.env.SECRET, {
           expiresIn: 5000,
         });
-        return res.json({ auth: true, token });
+        return res.json({ auth: true, token, user_id: login.id });
       } else {
-        return res.status(404).send("Usuário não encontrado");
+        return res.status(404).send("Usuário ou senha incorretos");
       }
     } catch (error) {
-      return res.status(400).send("Usuário ja existente");
+      return res.status(400).send("Usuário ou senha incorretos");
     }
   },
 
@@ -40,7 +40,7 @@ const loginController = {
         return res.send("deslogado");
       }
     } catch (error) {
-      return res.status(400).send("Usuário ja existente");
+      return res.status(400).send("Erro ao deslogar");
     }
   },
 };

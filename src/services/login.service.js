@@ -7,14 +7,20 @@ const loginService = {
     });
     return user;
   },
-  login: async (email) => {
+
+  login: async (body) => {
     const user = await prisma.user.findUnique({
       where: {
-        email: email,
+        email: body.email,
+        password: body.password,
       },
     });
 
-    return user;
+    if (user) {
+      return user;
+    } else {
+      console.log("nao existe");
+    }
   },
 
   logout: async (data) => {

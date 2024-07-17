@@ -7,7 +7,7 @@ const userController = {
 
       return res.status(200).send(user);
     } catch (error) {
-      return res.status(400).send("Usuário ja existente");
+      return res.status(400).send("Erro ao criar usuario");
     }
   },
 

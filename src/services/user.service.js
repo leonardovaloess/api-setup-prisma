@@ -1,6 +1,6 @@
 import { prisma } from "./prisma.js";
 
-const loginService = {
+const userService = {
   createUser: async (data) => {
     console.log("aqui", data);
 
@@ -35,4 +35,4 @@ const loginService = {
   },
 };
 
-export default loginService;
+export default userService;

@@ -11,7 +11,7 @@ routes.get("/", (req, res) => {
 
 // Rotas de users
 
-routes.post("/users", verifyJWT, userController.createUser);
+routes.post("/users", userController.createUser);
 
 routes.get("/users", verifyJWT, userController.getUsers);
 
