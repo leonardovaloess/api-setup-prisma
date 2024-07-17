@@ -5,6 +5,8 @@ const loginService = {
     const user = await prisma.user.create({
       data,
     });
+
+    console.log(user);
     return user;
   },
 
@@ -12,12 +14,16 @@ const loginService = {
     const user = await prisma.user.findUnique({
       where: {
         email: body.email,
-        password: body.password,
       },
     });
-
     if (user) {
-      return user;
+      if(user.password !== body.password){
+        console.log('senha incorreta');
+        return 
+      } else {
+        return user
+      }
+
     } else {
       console.log("nao existe");
     }

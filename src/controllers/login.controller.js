@@ -5,6 +5,7 @@ const loginController = {
   signUp: async (req, res) => {
     try {
       const user = await loginService.signUp(req.body);
+      
       const token = jwt.sign({ userId: user.id }, process.env.SECRET, {
         expiresIn: 5000,
       });
@@ -17,7 +18,6 @@ const loginController = {
   login: async (req, res) => {
     try {
       const login = await loginService.login(req.body);
-
       if (login) {
         const token = jwt.sign({ userId: login.id }, process.env.SECRET, {
           expiresIn: 5000,
