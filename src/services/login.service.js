@@ -6,7 +6,6 @@ const loginService = {
       data,
     });
 
-    console.log(user);
     return user;
   },
 
@@ -18,7 +17,6 @@ const loginService = {
     });
     if (user) {
       if(user.password !== body.password){
-        console.log('senha incorreta');
         return 
       } else {
         return user
